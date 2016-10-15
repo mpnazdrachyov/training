@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ub</groupId>
+    <artifactId>training</artifactId>
+    <version>0.1.0</version>
+    <packaging>war</packaging>
+    <name>training</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>3.2.5.RELEASE</spring.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ub</groupId>
+            <artifactId>UBCore</artifactId>
+            <version>0.3.0</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>training</finalName>
+        <resources>
+            <resource>
+                <directory>/src/main/webapp</directory>
+                <includes>
+                    <include>**/*.jsp</include>
+                    <include>**/*.properties</include>
+                </includes>
+
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+                <executions>
+                    <execution>
+                        <id>unpack_ubcore</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.ub</groupId>
+                                    <artifactId>UBCore</artifactId>
+                                    <version>0.3.0</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+
+                                    <outputDirectory>${basedir}/src/main/webapp</outputDirectory>
+                                    <destFileName>optional-new-name.jar</destFileName>
+                                    <includes>
+                                        **/WEB-INF/**/*.properties,**/*.xml,**/*.jpeg,**/*.jsp,**/*.js,**/*.css,**/*.png,**/*.ico,**/*.txt,**/*.png,**/*.jpg,**/*.eot,**/*.svg,**/*.ttf,**/*.woff,**/*.otf,**/*.rtf,**/*.gif,**/*.bmp,**/*.pdf
+                                    </includes>
+                                    <excludes>**/*pom.xml,**/*mvc-dispatcher-servlet.xml,**/web.xml</excludes>
+                                </artifactItem>
+                            </artifactItems>
+
+                            <includes>**/*.jsp</includes>
+                            <!--<excludes>**/*.properties</excludes>-->
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <outputDirectory>${project.build.directory}/wars</outputDirectory>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+                <version>2.5.1</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                    </includes>
+                </configuration>
+                <version>2.10</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

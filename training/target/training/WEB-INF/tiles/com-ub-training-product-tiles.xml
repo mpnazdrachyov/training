@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+     <definition name="com.ub.training.client.product" extends="com.ub.training.client.layout">
+        <put-attribute name="content" value="/WEB-INF/com/ub/training/client/product/product.jsp"/>
+    </definition>
+
+    <!--ADMIN-->
+    <definition name="com.ub.training.admin.product.all" extends="com.ub.core.admin.layout">
+        <put-attribute name="content" value="/WEB-INF/com/ub/training/admin/product/all.jsp"/>
+    </definition>
+    <definition name="com.ub.training.admin.product.add" extends="com.ub.core.admin.layout">
+        <put-attribute name="content" value="/WEB-INF/com/ub/training/admin/product/add.jsp"/>
+    </definition>
+    <definition name="com.ub.training.admin.product.edit" extends="com.ub.core.admin.layout">
+        <put-attribute name="content" value="/WEB-INF/com/ub/training/admin/product/edit.jsp"/>
+    </definition>
+    <definition name="com.ub.training.admin.product.delete" extends="com.ub.core.admin.layout">
+        <put-attribute name="content" value="/WEB-INF/com/ub/training/admin/product/delete.jsp"/>
+    </definition>
+    <definition name="com.ub.training.admin.product.modal.parent"
+        template="/WEB-INF/com/ub/training/admin/product/modalResponse.jsp">
+    </definition>
+
+</tiles-definitions>
